@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="theme-color" content="#2d6a4f"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-title" content="EcoCart"/>
+  <meta name="description" content="AI-powered eco-friendly shopping assistant"/>
+  <title>EcoCart — Shop With Purpose</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="bg-canvas"></div>
+<div class="leaf-layer" id="leaf-layer"></div>
+<div class="toast-container" id="toast-container"></div>
+
+<div class="app-shell">
+
+  <!-- ── SIDEBAR ──────────────────────────────────────────────────────── -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">🌿</div>
+      <div class="sidebar-logo-text">EcoCart</div>
+    </div>
+
+    <div class="sidebar-section-title">🌱 Your Eco Profile</div>
+
+    <div class="stat-row">
+      <span class="stat-chip"><span>👁</span> <span id="stat-seen">0</span> Seen</span>
+      <span class="stat-chip"><span>💚</span> <span id="stat-liked">0</span> Loved</span>
+      <span class="stat-chip"><span>👎</span> <span id="stat-disliked">0</span> Passed</span>
+    </div>
+
+    <div id="taste-profile">
+      <div class="cold-start-box">
+        <strong>🌿 Rate 5 products</strong><br/>
+        to unlock personalised eco picks
+      </div>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section-title">💡 How EcoCart Works</div>
+    <div class="how-it-works">
+      <p>1. Choose your <b>shopping category</b></p>
+      <p>2. Describe your <b>eco values</b> — UI shifts to match</p>
+      <p>3. AI matches your values against <b>product descriptions</b> + eco-tags</p>
+      <p>4. <b>Rate products</b> — personalisation improves over time</p>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section-title">🏆 Certifications We Track</div>
+    <div class="cert-list">
+      <span class="cert-badge">Organic</span>
+      <span class="cert-badge">Fair Trade</span>
+      <span class="cert-badge">B-Corp</span>
+      <span class="cert-badge">Vegan</span>
+      <span class="cert-badge">FSC</span>
+      <span class="cert-badge">Cruelty-Free</span>
+      <span class="cert-badge">Compostable</span>
+      <span class="cert-badge">Recycled</span>
+    </div>
+
+    <div class="sidebar-divider"></div>
+    <div class="eco-fact" id="eco-fact"></div>
+  </aside>
+
+  <!-- ── MAIN ─────────────────────────────────────────────────────────── -->
+  <main class="main-content">
+
+    <div class="hero">
+      <div class="hero-greeting"><span id="greeting-text">Good morning!</span></div>
+      <div class="hero-title">Shop With<br>Purpose</div>
+      <div class="hero-sub">AI-powered · Eco-matched · Values-first · Planet-friendly</div>
+    </div>
+
+    <div class="step-bar" id="step-bar"></div>
+
+    <!-- PAGE: Choose Category -->
+    <div class="page active" id="page-choose_category">
+      <div class="section-heading">What are you shopping for?</div>
+      <div class="section-sub">We'll find the most sustainable options matched to your values</div>
+      <div class="category-cards">
+        <div class="category-card" data-cat="beauty">
+          <span class="category-card-icon">✨</span>
+          <div class="category-card-title">Beauty & Care</div>
+          <div class="category-card-desc">Skincare, haircare, cosmetics — clean and cruelty-free.</div>
+        </div>
+        <div class="category-card" data-cat="home">
+          <span class="category-card-icon">🏠</span>
+          <div class="category-card-title">Home & Cleaning</div>
+          <div class="category-card-desc">Plastic-free, non-toxic household essentials.</div>
+        </div>
+        <div class="category-card" data-cat="food">
+          <span class="category-card-icon">🥦</span>
+          <div class="category-card-title">Food & Grocery</div>
+          <div class="category-card-desc">Organic, fair-trade, whole-food goodness.</div>
+        </div>
+        <div class="category-card" data-cat="clothing">
+          <span class="category-card-icon">👕</span>
+          <div class="category-card-title">Fashion & Apparel</div>
+          <div class="category-card-desc">Sustainable fabrics, ethical production.</div>
+        </div>
+        <div class="category-card" data-cat="electronics">
+          <span class="category-card-icon">☀️</span>
+          <div class="category-card-title">Tech & Solar</div>
+          <div class="category-card-desc">Renewable energy gadgets, recycled electronics.</div>
+        </div>
+        <div class="category-card" data-cat="outdoor">
+          <span class="category-card-icon">🌿</span>
+          <div class="category-card-title">Outdoor & Garden</div>
+          <div class="category-card-desc">Nature-friendly gear and garden essentials.</div>
+        </div>
+        <div class="category-card" data-cat="gift">
+          <span class="category-card-icon">🎁</span>
+          <div class="category-card-title">Gifts & Gifting</div>
+          <div class="category-card-desc">Meaningful gifts with a positive footprint.</div>
+        </div>
+        <div class="category-card" data-cat="all">
+          <span class="category-card-icon">🌍</span>
+          <div class="category-card-title">Explore All</div>
+          <div class="category-card-desc">Browse everything across all eco categories.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE: Choose Values -->
+    <div class="page" id="page-choose_values">
+      <div class="section-heading" id="values-heading">What matters most to you?</div>
+      <div class="section-sub">Pick your eco values — we match descriptions, not just labels</div>
+
+      <div class="values-grid" id="values-grid"></div>
+
+      <div class="intent-input-section">
+        <label class="intent-input-label">Or describe exactly what you're looking for</label>
+        <input type="text" id="intent-text-input" class="intent-text-input"
+          placeholder="e.g. plastic-free organic skincare for sensitive skin…"/>
+      </div>
+
+      <div class="budget-section">
+        <label class="budget-label">💰 Budget preference</label>
+        <div class="budget-chips">
+          <span class="budget-chip active" data-budget="any">Any</span>
+          <span class="budget-chip" data-budget="budget">Budget-friendly</span>
+          <span class="budget-chip" data-budget="premium">Premium</span>
+        </div>
+        <div class="price-filter" style="margin-top:10px">
+          <label class="budget-label" style="margin-bottom:4px">Max price (optional)</label>
+          <input type="number" id="max-price-input" class="price-input" placeholder="e.g. 30"/>
+        </div>
+      </div>
+
+      <div class="values-actions">
+        <button type="button" class="btn btn-primary" id="btn-find" disabled>🌿 Find Eco Products</button>
+        <button type="button" class="btn btn-outline" id="btn-discover">🌍 Discover</button>
+        <button type="button" class="btn btn-ghost btn-sm" id="btn-back-values">← Back</button>
+      </div>
+    </div>
+
+    <!-- PAGE: Results -->
+    <div class="page" id="page-results">
+      <div class="loading-screen" id="loading-screen">
+        <div class="spinner"></div>
+        <div class="loading-text">Matching your values to eco products…</div>
+      </div>
+
+      <div id="results-content" style="display:none">
+        <div class="result-header">
+          <div>
+            <div class="result-banner-title" id="result-banner-title">Your eco picks</div>
+            <div style="margin-top:5px">
+              <span class="result-badge" id="result-badge">🌿 Sustainable Products</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="personalised-tag" id="personalised-tag" style="display:none">
+          🎯 Personalised for your values
+        </div>
+
+        <div class="results-grid" id="results-list"></div>
+
+        <div class="bottom-actions">
+          <button type="button" class="btn btn-ghost"   id="btn-refresh">🔄 More Like This</button>
+          <button type="button" class="btn btn-outline" id="btn-change-values">🌱 Change Values</button>
+          <button type="button" class="btn btn-ghost"   id="btn-start-over">🏠 Start Over</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
