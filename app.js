@@ -3,7 +3,7 @@
    Mirrors CineMatch app.js pattern
    ================================================================ */
 
-const API = 'http://localhost:8000';
+  const API = 'http://localhost:8000';
 
 // ── State ──────────────────────────────────────────────────────────────
 const state = {
