@@ -3,8 +3,8 @@
    Mirrors CineMatch app.js pattern
    ================================================================ */
 
-const API = 'http://localhost:8000';
-
+// const API = 'http://localhost:8000';
+const API = 'https://your-railway-app.up.railway.app';
 // ── State ──────────────────────────────────────────────────────────────
 const state = {
   sessionId:   null,
