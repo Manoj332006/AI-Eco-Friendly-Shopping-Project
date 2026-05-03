@@ -3,8 +3,8 @@
    Mirrors CineMatch app.js pattern
    ================================================================ */
 
-  const API = 'http://localhost:8000';
-
+  // const API = 'http://localhost:8000';
+const API = "https://your-app.onrender.com";
 // ── State ──────────────────────────────────────────────────────────────
 const state = {
   sessionId:   null,
