@@ -4,7 +4,7 @@
    ================================================================ */
 
   // const API = 'http://localhost:8000';
-const API = "https://your-app.onrender.com";
+const API = '';
 // ── State ──────────────────────────────────────────────────────────────
 const state = {
   sessionId:   null,
