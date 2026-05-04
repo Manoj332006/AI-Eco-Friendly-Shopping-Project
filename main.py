@@ -5,7 +5,8 @@ Run: uvicorn main:app --reload --reload-exclude "data/*"
 On first run: seeds DB with curated eco-products + fetches from Open Food Facts
 Every Sunday midnight: auto-refreshes product data
 """
-
+# Add this import at the top with the other imports
+from fastapi.staticfiles import StaticFiles
 import asyncio
 import os
 from contextlib import asynccontextmanager
@@ -250,9 +251,7 @@ def get_profile(session_id: str):
         }
     }
     
-from fastapi.staticfiles import StaticFiles
-# at the very bottom, after all routes:
-app.mount("/", StaticFiles(directory=".", html=True), name="static")
+
 
 
 @app.post("/admin/refresh")
@@ -262,3 +261,5 @@ async def admin_refresh(admin_key: str = ""):
     await weekend_refresh()
     await _bg_reload()
     return {"ok": True, "db": get_stats()}
+    # This line must be LAST — after all @app.get/@app.post routes
+app.mount("/", StaticFiles(directory=".", html=True), name="static")
