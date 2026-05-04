@@ -249,6 +249,10 @@ def get_profile(session_id: str):
             "interactions": user.interactions(),
         }
     }
+    
+from fastapi.staticfiles import StaticFiles
+# at the very bottom, after all routes:
+app.mount("/", StaticFiles(directory=".", html=True), name="static")
 
 
 @app.post("/admin/refresh")
