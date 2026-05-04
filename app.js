@@ -4,7 +4,7 @@
    ================================================================ */
 
   // const API = 'http://localhost:8000';
-const API = '';
+const API = 'https://ai-eco-friendly-shopping-project.onrender.com/';
 // ── State ──────────────────────────────────────────────────────────────
 const state = {
   sessionId:   null,
